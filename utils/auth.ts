@@ -1,9 +1,11 @@
 export function get_auth_status(context) {
     var dopaths = context.request.url.split("/api/write/items/")
-    if (dopaths.size < 2) {
+    if (dopaths.length < 2) {
         dopaths = context.request.url.split("/children/")
     }
-
+    if (dopaths.length == 1) {
+        return false
+    }
     var dopath = dopaths[1]
     if(context.env["GUEST"]){
         // if(dopath.startsWith("_$flaredrive$/thumbnails/"))return true;
