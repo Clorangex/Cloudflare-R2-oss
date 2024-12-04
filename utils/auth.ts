@@ -11,6 +11,9 @@ export function get_auth_status(context) {
             }
         }
     }
+
+    if(headers.get('Authorization') == context.env["APIKEY"])return true
+
     var headers = new Headers(context.request.headers);
     if(!headers.get('Authorization'))return false
     const Authorization=headers.get('Authorization').split("Basic ")[1]
