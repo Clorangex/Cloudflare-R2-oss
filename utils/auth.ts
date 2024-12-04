@@ -20,11 +20,10 @@ export function get_auth_status(context) {
     }
 
     var headers = new Headers(context.request.headers);
-    if(!headers.get('Authorization'))return false
-
     if (context.env["APIKEY"]) {
-        if(headers.get('Authorization') == context.env["APIKEY"])return true;
+        if(headers.get('Apikey') == context.env["APIKEY"])return true;
     }
+    if(!headers.get('Authorization'))return false
     
     const Authorization=headers.get('Authorization').split("Basic ")[1]
     const account = atob(Authorization);
