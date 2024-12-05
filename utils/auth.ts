@@ -7,7 +7,7 @@ export function get_auth_status(context) {
         return false
     }
     var dopath = dopaths[1]
-    if(context.env["GUEST"] && context.request.Method === "get"){
+    if(context.env["GUEST"] && context.request.method === "GET"){
         // if(dopath.startsWith("_$flaredrive$/thumbnails/"))return true;
         const allow_guest = context.env["GUEST"].split(",")
         for (var aa of allow_guest){
